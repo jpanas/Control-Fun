@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        sliderLabel.text = "50"
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +31,21 @@ class ViewController: UIViewController {
     @IBAction func onTapGestureRecognized(sender: AnyObject) {
         nameField.resignFirstResponder()
         numberField.resignFirstResponder()
+    }
+    @IBAction func onSliderChanged(sender: UISlider)
+    {
+        sliderLabel.text = "\(lroundf(sender.value))"
+    }
+    @IBOutlet weak var sliderLabel: UILabel!
+    @IBOutlet weak var leftSwitch: UISwitch!
+    @IBOutlet weak var rightSwitch: UISwitch!
+    @IBAction func onSwitchedChanged(sender: UISwitch)
+    {
+        let setting = sender.on
+        leftSwitch.setOn(setting, animated: true)
+        rightSwitch.setOn(setting, animated: true)
+    }
+    @IBAction func toggleControls(sender: UISegmentedControl) {
     }
 }
 
